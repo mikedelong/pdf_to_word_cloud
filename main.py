@@ -25,4 +25,3 @@ for file_name in os.listdir(input_folder):
     logger.debug('input text length: %d' % len(input_text))
     tokens = input_text.split('\n')
     logger.debug(len(tokens))
-
