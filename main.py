@@ -27,8 +27,7 @@ for file_name in os.listdir(input_folder):
     input_file_name = input_folder + file_name
     logger.debug('relative input file name: %s' % input_file_name)
 
-    input_text = textract.process(input_file_name)
-    text = ' '.join(input_text.split('\n'))
+    text = textract.process(input_file_name)
 
     for ignore_word in ignore_words:
         text = text.replace(ignore_word, '')
@@ -42,3 +41,5 @@ for file_name in os.listdir(input_folder):
     full_output_filename = output_folder + output_file_name
     logger.debug('writing result to %s' % full_output_filename)
     plt.savefig(full_output_filename)
+    del figure
+    del axes
