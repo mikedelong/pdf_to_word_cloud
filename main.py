@@ -4,6 +4,7 @@ import os
 import textract
 import wordcloud
 import collections
+import matplotlib.pyplot as plt
 
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
@@ -16,6 +17,7 @@ console_handler.setLevel(logging.DEBUG)
 logger.debug('started')
 
 input_folder = './input/'
+output_folder = './output/'
 
 for file_name in os.listdir(input_folder):
     logger.debug('base input file name: %s' % file_name)
@@ -23,10 +25,11 @@ for file_name in os.listdir(input_folder):
     logger.debug('relative input file name: %s' % input_file_name)
 
     input_text = textract.process(input_file_name).lower()
+    text = ' '.join(input_text.split('\n'))
+    text = text.replace('also', '')
 
-    logger.debug('input text length: %d' % len(input_text))
-    tokens = ' '.join(input_text.split('\n'))
-    tokens = tokens.split(' ')
-    logger.debug('after splitting we have %d tokens' % len(tokens))
-    counts = collections.Counter(tokens)
-    logger.debug('after counting we have %d unique tokens' % len(counts))
+    result = wordcloud.WordCloud().generate(text)
+    plt.imshow(result, interpolation='bilinear')
+    plt.axis("off")
+    output_file_name = file_name.replace('.pdf', '.jpg')
+    plt.savefig(output_folder + output_file_name)
