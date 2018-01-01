@@ -3,6 +3,7 @@ import os
 
 import textract
 import wordcloud
+import collections
 
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
@@ -26,4 +27,6 @@ for file_name in os.listdir(input_folder):
     logger.debug('input text length: %d' % len(input_text))
     tokens = ' '.join(input_text.split('\n'))
     tokens = tokens.split(' ')
-    logger.debug(len(tokens))
+    logger.debug('after splitting we have %d tokens' % len(tokens))
+    counts = collections.Counter(tokens)
+    logger.debug('after counting we have %d unique tokens' % len(counts))
