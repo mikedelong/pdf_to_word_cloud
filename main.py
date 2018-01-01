@@ -27,7 +27,7 @@ for file_name in os.listdir(input_folder):
     input_file_name = input_folder + file_name
     logger.debug('relative input file name: %s' % input_file_name)
 
-    input_text = textract.process(input_file_name).lower()
+    input_text = textract.process(input_file_name)
     text = ' '.join(input_text.split('\n'))
 
     for ignore_word in ignore_words:
