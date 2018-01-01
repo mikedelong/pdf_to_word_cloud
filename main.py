@@ -1,7 +1,7 @@
 import logging
-import textract
-
 import os
+
+import textract
 
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
