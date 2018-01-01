@@ -2,6 +2,7 @@ import logging
 import os
 
 import textract
+import wordcloud
 
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
@@ -23,5 +24,6 @@ for file_name in os.listdir(input_folder):
     input_text = textract.process(input_file_name).lower()
 
     logger.debug('input text length: %d' % len(input_text))
-    tokens = input_text.split('\n')
+    tokens = ' '.join(input_text.split('\n'))
+    tokens = tokens.split(' ')
     logger.debug(len(tokens))
