@@ -1,10 +1,9 @@
 import logging
 import os
 
+import matplotlib.pyplot as plt
 import textract
 import wordcloud
-import collections
-import matplotlib.pyplot as plt
 
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
