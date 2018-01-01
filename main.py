@@ -16,6 +16,13 @@ logger.debug('started')
 input_folder = './input/'
 
 for file_name in os.listdir(input_folder):
-    logger.debug(file_name)
+    logger.debug('base input file name: %s' % file_name)
+    input_file_name = input_folder + file_name
+    logger.debug('relative input file name: %s' % input_file_name)
 
-    
+    input_text = textract.process(input_file_name).lower()
+
+    logger.debug('input text length: %d' % len(input_text))
+    tokens = input_text.split('\n')
+    logger.debug(len(tokens))
+
