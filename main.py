@@ -19,6 +19,7 @@ logger.debug('started')
 input_folder = './input/'
 output_folder = './output/'
 
+
 for file_name in os.listdir(input_folder):
     logger.debug('base input file name: %s' % file_name)
     input_file_name = input_folder + file_name
@@ -26,10 +27,13 @@ for file_name in os.listdir(input_folder):
 
     input_text = textract.process(input_file_name).lower()
     text = ' '.join(input_text.split('\n'))
+
     text = text.replace('also', '')
 
     result = wordcloud.WordCloud().generate(text)
     plt.imshow(result, interpolation='bilinear')
     plt.axis("off")
     output_file_name = file_name.replace('.pdf', '.jpg')
-    plt.savefig(output_folder + output_file_name)
+    full_output_filename = output_folder + output_file_name
+    logger.debug('writing result to %s' % full_output_filename)
+    plt.savefig(full_output_filename)
