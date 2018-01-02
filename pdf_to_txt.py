@@ -39,6 +39,8 @@ for item in os.listdir(input_folder):
     output_file = item.replace('.pdf', '.txt')
     full_output_filename = output_folder + output_file
     logger.debug('writing results to %s' % full_output_filename)
-
-    for token in text:
-        logger.debug(token)
+    with open(full_output_filename, 'w') as output_file_pointer:
+        for line in text:
+            line = line.strip()
+            if len(line) > 0:
+                output_file_pointer.write('%s\n' % line)
