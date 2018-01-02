@@ -18,8 +18,11 @@ ignore_words = ['also', 'one']
 ignore_words = sorted(ignore_words)
 logger.debug('words to ignore: %s' % ignore_words)
 
+# todo what if these folders do not exist?
 input_folder = './input/'
 output_folder = './output/'
+
+# todo restrict this to just PDF files
 for item in os.listdir(input_folder):
     logger.debug('base input file name: %s' % item)
     input_file_name = input_folder + item
@@ -36,6 +39,7 @@ for item in os.listdir(input_folder):
         text = text.replace(token, ' ')
     text = text.split(' ')
 
+    # todo what if the file name ends in PDF instead of pdf?
     output_file = item.replace('.pdf', '.txt')
     full_output_filename = output_folder + output_file
     logger.debug('writing results to %s' % full_output_filename)
