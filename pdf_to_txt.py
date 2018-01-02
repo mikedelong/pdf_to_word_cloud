@@ -38,6 +38,7 @@ for item in os.listdir(input_folder):
 
     output_file = item.replace('.pdf', '.txt')
     full_output_filename = output_folder + output_file
+    logger.debug('writing results to %s' % full_output_filename)
 
     for token in text:
         logger.debug(token)
