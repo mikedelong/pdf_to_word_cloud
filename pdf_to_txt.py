@@ -24,27 +24,30 @@ output_folder = './output/'
 
 # todo restrict this to just PDF files
 for item in os.listdir(input_folder):
-    logger.debug('base input file name: %s' % item)
-    input_file_name = input_folder + item
-    logger.debug('relative input file name: %s' % input_file_name)
+    if (item.endswith('.pdf') or item.endswith('PDF')):
+        logger.debug('base input file name: %s' % item)
+        input_file_name = input_folder + item
+        logger.debug('relative input file name: %s' % input_file_name)
 
-    text = textract.process(input_file_name)
+        text = textract.process(input_file_name)
 
-    for key, value in punctuation_outliers.iteritems():
-        text = text.replace(key, value)
-    for ignore_word in ignore_words:
-        text = text.replace(ignore_word, '')
+        for key, value in punctuation_outliers.iteritems():
+            text = text.replace(key, value)
+        for ignore_word in ignore_words:
+            text = text.replace(ignore_word, '')
 
-    for token in ['\n', '.', ',', '(', ')']:
-        text = text.replace(token, ' ')
-    text = text.split(' ')
+        for token in ['\n', '.', ',', '(', ')']:
+            text = text.replace(token, ' ')
+        text = text.split(' ')
 
-    # todo what if the file name ends in PDF instead of pdf?
-    output_file = item.replace('.pdf', '.txt')
-    full_output_filename = output_folder + output_file
-    logger.debug('writing results to %s' % full_output_filename)
-    with open(full_output_filename, 'w') as output_file_pointer:
-        for line in text:
-            line = line.strip()
-            if len(line) > 0:
-                output_file_pointer.write('%s\n' % line)
+        # todo what if the file name ends in PDF instead of pdf?
+        output_file = item.replace('.pdf', '.txt')
+        full_output_filename = output_folder + output_file
+        logger.debug('writing results to %s' % full_output_filename)
+        with open(full_output_filename, 'w') as output_file_pointer:
+            for line in text:
+                line = line.strip()
+                if len(line) > 0:
+                    output_file_pointer.write('%s\n' % line)
+    else:
+        logger.debug('ignoring file %s due to improper suffix' % item)
