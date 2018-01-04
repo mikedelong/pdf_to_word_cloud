@@ -40,7 +40,8 @@ for item in os.listdir(input_folder):
         text = text.split(' ')
 
         # todo what if the file name ends in PDF instead of pdf?
-        output_file = item.replace('.pdf', '.txt')
+        output_file = item.replace('.pdf', '.txt') if item.endswith('.pdf') else item.replace('.PDF', '.txt')
+
         full_output_filename = output_folder + output_file
         logger.debug('writing results to %s' % full_output_filename)
         with open(full_output_filename, 'w') as output_file_pointer:
