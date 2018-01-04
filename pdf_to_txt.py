@@ -22,7 +22,6 @@ logger.debug('words to ignore: %s' % ignore_words)
 input_folder = './input/'
 output_folder = './output/'
 
-# todo restrict this to just PDF files
 for item in os.listdir(input_folder):
     if (item.endswith('.pdf') or item.endswith('PDF')):
         logger.debug('base input file name: %s' % item)
