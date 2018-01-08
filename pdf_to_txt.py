@@ -2,7 +2,7 @@ import logging
 import os
 
 import textract
-
+import PyPDF2
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
 logger = logging.getLogger('main')
@@ -23,7 +23,7 @@ input_folder = './input/'
 output_folder = './output/'
 
 for item in os.listdir(input_folder):
-    if (item.endswith('.pdf') or item.endswith('PDF')):
+    if item.endswith('.pdf') or item.endswith('PDF'):
         logger.debug('base input file name: %s' % item)
         input_file_name = input_folder + item
         logger.debug('relative input file name: %s' % input_file_name)
