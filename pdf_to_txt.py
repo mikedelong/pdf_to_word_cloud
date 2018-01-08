@@ -16,7 +16,7 @@ console_handler.setLevel(logging.DEBUG)
 logger.debug('started')
 
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
-ignore_words = ['also', 'one']
+ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', '1', '2', '3', '4']
 ignore_words = sorted(ignore_words)
 logger.debug('words to ignore: %s' % ignore_words)
 
@@ -45,12 +45,11 @@ for item in os.listdir(input_folder):
 
         for key, value in punctuation_outliers.items():
             text = text.replace(key, value)
-        for ignore_word in ignore_words:
-            text = text.replace(ignore_word, '')
 
         for token in ['\n', '.', ',', '(', ')']:
             text = text.replace(token, ' ')
         text = text.split(' ')
+        text = [item for item in text if item not in ignore_words]
 
         # we know from the if-then structure above we only need to handle two cases here
         output_file = item.replace('.pdf', '.txt') if item.endswith('.pdf') else item.replace('.PDF', '.txt')
