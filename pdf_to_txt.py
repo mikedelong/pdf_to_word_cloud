@@ -50,6 +50,7 @@ for item in os.listdir(input_folder):
             text = text.replace(token, ' ')
         text = text.split(' ')
         text = [item for item in text if item not in ignore_words]
+        text = [item for item in text if not item.isnumeric()]
 
         # we know from the if-then structure above we only need to handle two cases here
         output_file = item.replace('.pdf', '.txt') if item.endswith('.pdf') else item.replace('.PDF', '.txt')
