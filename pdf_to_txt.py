@@ -4,6 +4,7 @@ import os
 if False:
     import textract
 import PyPDF2
+
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
 logger = logging.getLogger('main')
@@ -35,7 +36,7 @@ for item in os.listdir(input_folder):
         with open(input_file_name, 'rb') as pdf_input:
             pdf_file_reader = PyPDF2.PdfFileReader(pdf_input)
             number_of_pages = pdf_file_reader.getNumPages()
-            for page in range(0,number_of_pages):
+            for page in range(0, number_of_pages):
                 reader_page = pdf_file_reader.getPage(page)
                 page_content = reader_page.extractText()
                 text.append(page_content)
