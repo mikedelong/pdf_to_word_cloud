@@ -19,7 +19,7 @@ logger.debug('started')
 
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'a', 'as', 'an', 'this',
-                'that', 'will', 'are', 'not', 'be', 'by', 'with']
+                'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on']
 ignore_words = sorted(ignore_words)
 logger.debug('words to ignore: %s' % ignore_words)
 
@@ -52,14 +52,14 @@ for item in os.listdir(input_folder):
         for token in ['\n', '.', ',', '(', ')']:
             text = text.replace(token, ' ')
         text = text.split(' ')
-        text = [item for item in text if item.lower() not in ignore_words]
+        text = [item.strip() for item in text if item.lower() not in ignore_words]
         text = [item for item in text if len(item) > 0]
         text = [item for item in text if not item.isnumeric()]
 
         # let's use a Counter to get the top N
+        most_common_count = 40
         counts = collections.Counter(text)
-        most_common = counts.most_common(40)
-        tops = [item[0] for item in counts.most_common(30)]
+        tops = [item[0] for item in counts.most_common(most_common_count)]
 
         text = [item for item in text if item in tops]
         # we know from the if-then structure above we only need to handle two cases here
