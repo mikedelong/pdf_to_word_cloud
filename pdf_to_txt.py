@@ -1,11 +1,8 @@
+import collections
 import logging
 import os
 
-if False:
-    import textract
 import PyPDF2
-
-import collections
 
 # set up logging
 formatter = logging.Formatter('%(asctime)s : %(name)s :: %(levelname)s : %(message)s')
@@ -34,8 +31,6 @@ for item in os.listdir(input_folder):
         input_file_name = input_folder + item
         logger.debug('relative input file name: %s' % input_file_name)
 
-        if False:
-            text = textract.process(input_file_name)
         text = list()
         with open(input_file_name, 'rb') as pdf_input:
             pdf_file_reader = PyPDF2.PdfFileReader(pdf_input)
