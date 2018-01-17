@@ -63,7 +63,7 @@ for item in os.listdir(input_folder):
 
         full_output_filename = output_folder + output_file
         logger.debug('writing results to %s' % full_output_filename)
-        with open(full_output_filename, 'w') as output_file_pointer:
+        with open(full_output_filename, 'w', encoding='utf-8') as output_file_pointer:
             for line in text:
                 line = line.strip()
                 if len(line) > 0:
