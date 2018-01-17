@@ -17,7 +17,8 @@ logger.debug('started')
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'a', 'as', 'an', 'this',
                 'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without', 'at', 'must',
-                'no', 'who', 'does', 'all', 'their', 'other', 'any', 'e', 's', 'if', 'nor', 'should']
+                'no', 'who', 'does', 'all', 'their', 'other', 'any', 'e', 's', 'if', 'nor', 'should', 'we', 'our',
+                'use', 'have']
 ignore_words = sorted(ignore_words)
 logger.debug('words to ignore: %s' % ignore_words)
 
