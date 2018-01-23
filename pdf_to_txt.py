@@ -16,11 +16,12 @@ logger.debug('started')
 
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 
-if False:
+if True:
     ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'a', 'as', 'an',
                     'this', 'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without',
                     'at', 'must', 'no', 'who', 'does', 'all', 'their', 'other', 'any', 'e', 's', 'if', 'nor', 'should',
-                    'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more']
+                    'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more', 'how', 'get',
+                    'was', 'I', 'do', 'would', 'up', 'make', 'what', 'where', 'out', 'thing', 'your']
     ignore_words = sorted(ignore_words)
     logger.debug('words to ignore: %s' % ignore_words)
     ignore_words_file = './ignore-words.txt'
@@ -33,6 +34,7 @@ else:
     with open(ignore_words_file, 'r') as infile_fp:
         items = infile_fp.readlines()
         ignore_words = [item.strip() for item in items]
+    # todo log the word list as above
 
 # todo what if these folders do not exist?
 input_folder = './input/'
@@ -70,7 +72,7 @@ for item in os.listdir(input_folder):
         counts = collections.Counter(text)
         tops = [item[0] for item in counts.most_common(most_common_count)]
 
-        text = [item for item in text if item in tops]
+        text = ['Words'].append([item for item in text if item in tops])
         # we know from the if-then structure above we only need to handle two cases here
         output_file = item.replace('.pdf', '.txt') if item.endswith('.pdf') else item.replace('.PDF', '.txt')
 
