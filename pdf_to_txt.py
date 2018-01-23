@@ -20,14 +20,13 @@ ignore_words_file = './ignore-words.txt'
 
 if True:
     ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'a', 'as', 'an',
-                    'this',
-                    'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without', 'at',
-                    'must',
-                    'no', 'who', 'does', 'all', 'their', 'other', 'any', 'e', 's', 'if', 'nor', 'should', 'we', 'our',
-                    'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more']
+                    'this', 'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without',
+                    'at', 'must', 'no', 'who', 'does', 'all', 'their', 'other', 'any', 'e', 's', 'if', 'nor', 'should',
+                    'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more']
     ignore_words = sorted(ignore_words)
     logger.debug('words to ignore: %s' % ignore_words)
 else:
+    ignore_words = list()
     pass
 
 # todo what if these folders do not exist?
