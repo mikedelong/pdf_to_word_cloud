@@ -72,7 +72,10 @@ for item in os.listdir(input_folder):
         counts = collections.Counter(text)
         tops = [item[0] for item in counts.most_common(most_common_count)]
 
-        text = ['Words'].append([item for item in text if item in tops])
+        # todo fix this hack
+        text = [item for item in text if item in tops]
+        text.append('Words')
+        text.reverse()
         # we know from the if-then structure above we only need to handle two cases here
         output_file = item.replace('.pdf', '.txt') if item.endswith('.pdf') else item.replace('.PDF', '.txt')
 
