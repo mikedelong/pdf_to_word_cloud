@@ -33,8 +33,6 @@ else:
     with open(ignore_words_file, 'r') as infile_fp:
         items = infile_fp.readlines()
         ignore_words = [item.strip() for item in items]
-    ignore_words = list()
-    pass
 
 # todo what if these folders do not exist?
 input_folder = './input/'
