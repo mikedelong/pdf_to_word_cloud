@@ -16,8 +16,6 @@ logger.debug('started')
 
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 
-ignore_words_file = './ignore-words.txt'
-
 if True:
     ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'a', 'as', 'an',
                     'this', 'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without',
@@ -26,6 +24,7 @@ if True:
     ignore_words = sorted(ignore_words)
     logger.debug('words to ignore: %s' % ignore_words)
 else:
+    ignore_words_file = './ignore-words.txt'
     ignore_words = list()
     pass
 
