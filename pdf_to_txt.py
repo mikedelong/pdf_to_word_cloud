@@ -23,6 +23,11 @@ if True:
                     'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more']
     ignore_words = sorted(ignore_words)
     logger.debug('words to ignore: %s' % ignore_words)
+    ignore_words_file = './ignore-words.txt'
+    with open(ignore_words_file, 'w') as outfile_fp:
+        for item in ignore_words:
+            outfile_fp.write('%s\n' % item)
+
 else:
     ignore_words_file = './ignore-words.txt'
     ignore_words = list()
