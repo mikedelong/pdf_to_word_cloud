@@ -17,11 +17,13 @@ logger.debug('started')
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 
 if True:
-    ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'a', 'as', 'an',
+    ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'as', 'an',
                     'this', 'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without',
-                    'at', 'must', 'no', 'who', 'does', 'all', 'their', 'other', 'any', 'e', 's', 'if', 'nor', 'should',
+                    'at', 'must', 'no', 'who', 'does', 'all', 'their', 'other', 'any', 'if', 'nor', 'should',
                     'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more', 'how', 'get',
-                    'was', 'I', 'do', 'would', 'up', 'make', 'what', 'where', 'out', 'thing', 'your']
+                    'was', 'do', 'would', 'up', 'make', 'what', 'where', 'out', 'thing', 'your', 'about', 'some',
+                    'you', 'see', 'them', 'there', 'so', 'lot', 'want', 'can', 'need', 'but', 'then', 'going', 'things',
+                    'those', 'help', 'could', 'into', 'he', 'his', 'us', 'upon', 'which']
     ignore_words = sorted(ignore_words)
     logger.debug('words to ignore: %s' % ignore_words)
     ignore_words_file = './ignore-words.txt'
@@ -60,11 +62,11 @@ for item in os.listdir(input_folder):
         for key, value in punctuation_outliers.items():
             text = text.replace(key, value)
 
-        for token in ['\n', '.', ',', '(', ')']:
+        for token in ['\n', '.', ',', '(', ')', ':']:
             text = text.replace(token, ' ')
         text = text.split(' ')
         text = [item.strip() for item in text if item.lower() not in ignore_words]
-        text = [item for item in text if len(item) > 0]
+        text = [item for item in text if len(item) > 1]
         text = [item for item in text if not item.isnumeric()]
 
         # let's use a Counter to get the top N
