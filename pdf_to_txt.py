@@ -25,7 +25,6 @@ if True:
                     'you', 'see', 'them', 'there', 'so', 'lot', 'want', 'can', 'need', 'but', 'then', 'going', 'things',
                     'those', 'help', 'could', 'into', 'he', 'his', 'us', 'upon', 'which']
     ignore_words = sorted(ignore_words)
-    logger.debug('words to ignore: %s' % ignore_words)
     ignore_words_file = './ignore-words.txt'
     with open(ignore_words_file, 'w') as outfile_fp:
         for item in ignore_words:
@@ -36,7 +35,9 @@ else:
     with open(ignore_words_file, 'r') as infile_fp:
         items = infile_fp.readlines()
         ignore_words = [item.strip() for item in items]
-    # todo log the word list as above
+
+logger.debug('words to ignore: %s' % ignore_words)
+
 
 # todo what if these folders do not exist?
 input_folder = './input/'
