@@ -75,7 +75,8 @@ for item in os.listdir(input_folder):
         # let's use a Counter to get the top N
         most_common_count = 50
         counts = collections.Counter(text)
-        tops = [item[0] for item in counts.most_common(most_common_count)]
+        threshold = 3
+        tops = [item[0] for item in counts.most_common(most_common_count) if item[1] > threshold]
 
         # todo fix this hack
         text = [item for item in text if item in tops]
