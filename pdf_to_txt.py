@@ -17,7 +17,7 @@ logger.debug('started')
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 
 if True:
-    ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', '-', 'as', 'an',
+    ignore_words = ['also', 'one', 'and', 'the', 'for', 'to', 'from', 'is', 'or', 'in', 'of', 'as', 'an',
                     'this', 'that', 'will', 'are', 'not', 'be', 'by', 'with', 'on', 'it', 'may', 'only', 'without',
                     'at', 'must', 'no', 'who', 'does', 'all', 'their', 'other', 'any', 'if', 'nor', 'should',
                     'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more', 'how', 'get',
@@ -65,7 +65,7 @@ for item in os.listdir(input_folder):
         for key, value in punctuation_outliers.items():
             text = text.replace(key, value)
 
-        for token in ['\n', '.', ',', '(', ')', ':']:
+        for token in ['\n', '.', ',', '(', ')', ':', '-']:
             text = text.replace(token, ' ')
         text = text.split(' ')
         text = [item.strip() for item in text if item.lower() not in ignore_words]
@@ -73,7 +73,7 @@ for item in os.listdir(input_folder):
         text = [item for item in text if not item.isnumeric()]
 
         # let's use a Counter to get the top N
-        most_common_count = 40
+        most_common_count = 50
         counts = collections.Counter(text)
         tops = [item[0] for item in counts.most_common(most_common_count)]
 
