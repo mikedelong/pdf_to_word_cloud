@@ -36,7 +36,7 @@ else:
         items = infile_fp.readlines()
         ignore_words = [item.strip() for item in items]
 
-logger.debug('words to ignore: %s' % ignore_words)
+logger.debug('we are ignoring %d words: %s' % (len(ignore_words), sorted(ignore_words)))
 
 
 # todo what if these folders do not exist?
