@@ -14,6 +14,8 @@ logger.addHandler(console_handler)
 console_handler.setLevel(logging.DEBUG)
 logger.debug('started')
 
+# todo how to handle two-word terms?
+
 punctuation_outliers = {'i.e.': 'ie', 'U.S.': 'US'}
 
 if True:
