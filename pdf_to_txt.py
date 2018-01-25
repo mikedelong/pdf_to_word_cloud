@@ -23,7 +23,8 @@ if True:
                     'we', 'our', 'use', 'have', 'when', 'they', 'has', 'through', 'while', 'more', 'how', 'get',
                     'was', 'do', 'would', 'up', 'make', 'what', 'where', 'out', 'thing', 'your', 'about', 'some',
                     'you', 'see', 'them', 'there', 'so', 'lot', 'want', 'can', 'need', 'but', 'then', 'going', 'things',
-                    'those', 'help', 'could', 'into', 'he', 'his', 'us', 'upon', 'which', 'its']
+                    'those', 'help', 'could', 'into', 'he', 'his', 'us', 'upon', 'which', 'its', 'ing', 'these', 'thus',
+                    'within']
     ignore_words = sorted(ignore_words)
     ignore_words_file = './ignore-words.txt'
     with open(ignore_words_file, 'w') as outfile_fp:
