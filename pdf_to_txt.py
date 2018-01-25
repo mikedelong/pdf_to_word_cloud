@@ -43,7 +43,6 @@ else:
 ignore_words = sorted(list(set(ignore_words)))
 logger.debug('we are ignoring %d words: %s' % (len(ignore_words), ignore_words))
 
-
 # todo what if these folders do not exist?
 input_folder = './input/'
 output_folder = './output/'
